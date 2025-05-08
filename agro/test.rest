@@ -1,0 +1,13 @@
+@host=http://127.0.0.1:8000/api
+
+###
+post {{host}}/accounts/signup/
+Content-Type: application/json
+
+{"username": "Mayowa", "email": "mayowayusuf3004@gmail.com", "password": "Cr@ne3004"}
+
+###
+post {{host}}/accounts/login/
+Content-Type: application/json
+
+{"email": "mayowayusuf3004@gmail.com", "password": "Cr@ne3004" }

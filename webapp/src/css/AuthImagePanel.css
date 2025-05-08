@@ -1,0 +1,51 @@
+.auth-image {
+  flex: 1;
+  background-color: #1e5631;
+  color: white;
+  /* padding: 3rem; */
+  display: flex;
+  flex-direction: column;
+  /* max-width: 400px; */
+}
+
+.auth-image h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.auth-image .highlight {
+  color: #f39c12;
+}
+
+.auth-image .tagline {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.feature-item .icon {
+  color: #f39c12;
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.feature-description {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  opacity: 0.85;
+}

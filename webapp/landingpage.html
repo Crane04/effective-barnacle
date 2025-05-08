@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmCredit - Credit Assessment for Farmers</title>
+    <style>
+      :root {
+        --primary: #1e5631;
+        --secondary: #f39c12;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --accent: #8bc34a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--primary);
+        color: white;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 24px;
+        color: white;
+      }
+
+      .logo-icon {
+        margin-right: 10px;
+        font-size: 28px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        margin-right: 30px;
+      }
+
+      .nav-links li {
+        margin-left: 25px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: opacity 0.2s;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.8;
+      }
+
+      .nav-button {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 24px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-button {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: block;
+        }
+      }
+
+      main {
+        display: flex;
+        flex: 1;
+        gap: 40px;
+        padding: 40px 0;
+      }
+
+      .left-column {
+        flex: 1;
+      }
+
+      .coming-soon {
+        background-color: var(--secondary);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      h1 span {
+        color: var(--secondary);
+      }
+
+      .subtitle {
+        margin-bottom: 30px;
+        font-size: 16px;
+        max-width: 500px;
+      }
+
+      .features {
+        margin-top: 40px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+
+      .feature-icon {
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .feature-text h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      .feature-text p {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .trusted-by {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 12px;
+      }
+
+      .trusted-by-icon {
+        width: 40px;
+        height: 40px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+
+      .right-column {
+        flex: 0 0 400px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 30px;
+        height: fit-content;
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .form-header h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .form-header p {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      select.form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.293l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 1 1 .708-.708L8 10.293z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 40px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .checkbox-group input {
+        margin-right: 10px;
+      }
+
+      .checkbox-group label {
+        font-size: 14px;
+      }
+
+      .btn-primary {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        background-color: var(--secondary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.2s;
+      }
+
+      .btn-primary:hover {
+        background-color: #e67e22;
+      }
+
+      .terms {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 20px;
+        opacity: 0.7;
+      }
+
+      .terms a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      /* Mobile menu overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: var(--primary);
+        overflow: hidden;
+        transition: height 0.3s ease;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-menu-overlay.active {
+        height: 100%;
+      }
+
+      .mobile-menu-overlay .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .mobile-menu-overlay ul {
+        list-style: none;
+        text-align: center;
+      }
+
+      .mobile-menu-overlay li {
+        margin: 20px 0;
+      }
+
+      .mobile-menu-overlay a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          flex-direction: column;
+        }
+
+        .right-column {
+          flex: 0 0 auto;
+          width: 100%;
+          margin-top: 40px;
+        }
+
+        h1 {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+      <button class="close-button" id="closeMenu">✕</button>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <header>
+        <div class="logo">
+          <div class="logo-icon">🌱</div>
+          FarmCredit
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+          <a href="#" class="nav-button">Login</a>
+          <button class="mobile-menu-toggle">☰</button>
+        </nav>
+      </header>
+
+      <main>
+        <div class="left-column">
+          <div class="coming-soon">Coming Soon</div>
+          <h1>The Future of <span>Agricultural</span> Credit Assessment</h1>
+          <p class="subtitle">
+            Join the waitlist for exclusive early access to FarmCredit -
+            Africa's premier farmer credit worthiness classification platform.
+          </p>
+
+          <div class="features">
+            <div class="feature-item">
+              <div class="feature-icon">📊</div>
+              <div class="feature-text">
+                <h3>Smart Credit Scoring</h3>
+                <p>
+                  Accurately assess farmer creditworthiness using AI and
+                  comprehensive data analysis
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">🌾</div>
+              <div class="feature-text">
+                <h3>Crop-Specific Analytics</h3>
+                <p>
+                  Analyze performance metrics based on crop types and regional
+                  agricultural patterns
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">📱</div>
+              <div class="feature-text">
+                <h3>Mobile Assessment Tools</h3>
+                <p>
+                  Collect and verify farmer data in the field with our
+                  mobile-friendly platform
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">🔄</div>
+              <div class="feature-text">
+                <h3>Risk Management</h3>
+                <p>
+                  Make data-driven lending decisions and minimize default risks
+                  across your portfolio
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="trusted-by">
+            <div class="trusted-by-icon">✓</div>
+            <div>
+              <p>
+                <strong
+                  >Already trusted by forward-thinking agricultural
+                  lenders</strong
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="form-header">
+            <h2>Join Our Waitlist</h2>
+            <p>Be the first to experience FarmCredit when we launch</p>
+          </div>
+
+          <form>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                class="form-control"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Organization Name (Optional)</label>
+              <input
+                type="text"
+                id="company"
+                class="form-control"
+                placeholder="Your organization"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="role">Your Role</label>
+              <select id="role" class="form-control">
+                <option value="" disabled selected>Select your role</option>
+                <option value="lender">Agricultural Lender</option>
+                <option value="bank">Bank Officer</option>
+                <option value="cooperative">Cooperative Manager</option>
+                <option value="microfinance">Microfinance Institution</option>
+                <option value="ngo">NGO Representative</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="updates" checked />
+              <label for="updates"
+                >Send me updates about FarmCredit's launch and features</label
+              >
+            </div>
+
+            <button type="submit" class="btn-primary">Join Waitlist →</button>
+
+            <p class="terms">
+              By joining, you agree to our <a href="#">Terms of Service</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script>
+      // Mobile menu toggle
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const closeMenuButton = document.getElementById("closeMenu");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (mobileMenuToggle && closeMenuButton && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", () => {
+          mobileMenu.classList.add("active");
+        });
+
+        closeMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+        });
+      }
+    </script>
+  </body>
+</html>
