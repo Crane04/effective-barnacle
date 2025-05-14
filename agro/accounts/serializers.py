@@ -7,14 +7,15 @@ class UserSignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'email', 'phone_number', 'password', 'user_type']
+        fields = ['id', 'username', 'email', 'phone_number', 'password', 'user_type', "organization_name"]
 
     def create(self, validated_data):
         user = CustomUser(
             email=validated_data['email'],
             username=validated_data['username'],
             phone_number=validated_data.get('phone_number'),
-            user_type=validated_data.get('user_type', 'user')
+            user_type=validated_data.get('user_type', 'user'),
+            organization_name=validated_data.get("organization_name")
         )
         user.set_password(validated_data['password'])
         user.save()

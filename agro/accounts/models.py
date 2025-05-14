@@ -7,9 +7,11 @@ class CustomUser(AbstractUser):
         ('lender', 'Lender'),
         ('user', 'User'),
     ]
+    fullname = models.CharField(max_length=25, blank=True, null=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default='user')
+    organization_name = models.CharField(max_length=20, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

@@ -4,10 +4,37 @@
 post {{host}}/accounts/signup/
 Content-Type: application/json
 
-{"username": "Mayowa", "email": "mayowayusuf3004@gmail.com", "password": "Cr@ne3004"}
-
+{
+    "email": "mayowayusuf3004s@gmail.com",
+    "username": "abcx",
+    "password": "Cr@ne3004",
+    "confirmPassword": "Cr@ne3004",
+    "organization_name": "abc",
+    "user_type": "user",
+    "phone_number": "09114081137"
+}
 ###
 post {{host}}/accounts/login/
 Content-Type: application/json
 
-{"email": "mayowayusuf3004@gmail.com", "password": "Cr@ne3004" }
+{"email": "abcd@gmail.com", "password": "Cr@ne3004" }
+###
+post {{host}}/accounts/token/refresh/
+
+####
+get {{host}}/accounts/online/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2NzE5MDAyLCJpYXQiOjE3NDY3MTg3MDIsImp0aSI6ImEwYWQzNWZmMTMxZDQwYjg5YmJkNzJlNDVhZjE5Yjg3IiwidXNlcl9pZCI6MX0.Hxz6UbmWLnE57PKPvTgE1OwsTdJJ-HleLFwD4d28Dcc
+
+###
+get {{host}}/user-info/household/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MTQwNzYyLCJpYXQiOjE3NDcwNTQzNjIsImp0aSI6IjBhZWYxNzViNjJlNjRmNWQ4ZDdkZjA4ZjRlZDc0NTBkIiwidXNlcl9pZCI6Nn0.x9sHTnYdqy_ypRwkJsSYI01AegBUjhdJlNv4TiZp1-Q
+
+###
+
+get {{host}}/user-info/credit-score/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MTQwNzYyLCJpYXQiOjE3NDcwNTQzNjIsImp0aSI6IjBhZWYxNzViNjJlNjRmNWQ4ZDdkZjA4ZjRlZDc0NTBkIiwidXNlcl9pZCI6Nn0.x9sHTnYdqy_ypRwkJsSYI01AegBUjhdJlNv4TiZp1-Q
+
+###
