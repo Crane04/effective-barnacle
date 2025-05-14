@@ -1,21 +1,22 @@
 import React from "react";
-interface ApiError {
-  [key: string]: string[] | string;
-}
-interface ErrorResponse {
-  [key: string]: string[];
-}
 
-interface ErrorDisplayProps {
-  errors: ErrorResponse;
-}
+// interface ErrorResponse {
+//   [key: string]: string[] | string;
+// }
+// interface ErrorDisplayProps {
+//   errors: ErrorResponse;
+// }
 
-const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ errors }) => {
+// interface ErrorDisplayProps {
+//   errors: ErrorResponse;
+// }
+
+const ErrorDisplay: React.FC<any> = ({ errors }) => {
   if (!errors) return null;
 
   return (
     <div className="error-container">
-      {Object.entries(errors).map(([field, messages]) => (
+      {Object.entries(errors).map(([field, messages]: any) => (
         <div key={field} className="error-field">
           {Array.isArray(messages) ? (
             messages.map((message, index) => (

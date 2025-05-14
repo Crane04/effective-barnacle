@@ -1,6 +1,5 @@
-// components/PowerBIEmbed.tsx
-import React from 'react';
-import '../css/PowerBIEmbed.css';
+import React from "react";
+import "../css/PowerBIEmbed.css";
 
 interface PowerBIEmbedProps {
   title: string;
@@ -9,11 +8,11 @@ interface PowerBIEmbedProps {
   height?: string;
 }
 
-const PowerBIEmbed: React.FC<PowerBIEmbedProps> = ({ 
-  title, 
-  src, 
-  width = '100%', 
-  height = '600px' 
+const PowerBIEmbed: React.FC<PowerBIEmbedProps> = ({
+  title,
+  src,
+  width = "100%",
+  height = "600px",
 }) => {
   return (
     <div className="powerbi-container">

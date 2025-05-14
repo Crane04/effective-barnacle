@@ -154,7 +154,7 @@ const Signup: React.FC = () => {
               onChange={handleChange}
               placeholder="*******"
             />
-            {/* <ErrorDisplay errors={error} /> */}
+            <ErrorDisplay errors={error} />
             <Button variant="secondary" type="submit">
               Join Now
             </Button>

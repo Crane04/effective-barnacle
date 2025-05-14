@@ -149,7 +149,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_CREDENTIALS=True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # your React app
+    "http://localhost:5173",
+    "https://agromonie.netlify.app/" 
 ]
 
 CORS_ALLOW_METHODS = (

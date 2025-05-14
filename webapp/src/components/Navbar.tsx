@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <h2>AgriMonie</h2>
       <div className="nav-links">
-        <Link to="/home">Home</Link>
+        {user?.online && <Link to="/home">Home</Link>}
         {user?.online && <Link to="/score">Credit Score</Link>}
         {user?.online && <Link to="/profile">Profile</Link>}
         {user?.online && <Link to="/dashboard">Dashboard</Link>}

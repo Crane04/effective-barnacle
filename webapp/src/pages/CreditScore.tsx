@@ -11,7 +11,6 @@ interface CreditScoreResponse {
 }
 
 const CreditScore: React.FC = () => {
-  const token = localStorage.getItem("access");
   const [score, setScore] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [missingFields, setMissingFields] = useState<string[]>([]);

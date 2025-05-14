@@ -1,6 +1,7 @@
 // pages/DashboardPage.tsx
 import React from "react";
-import PowerBIEmbed from "../components/PowerBiEmbed";
+// import PowerBIEmbed from "../components/PowerBIEmbed";
+import PowerBIEmbed from "../components/Power";
 import "../css/DashboardPage.css";
 
 const DashboardPage: React.FC = () => {
