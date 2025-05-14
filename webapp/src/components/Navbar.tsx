@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
-  console.log(user);
+  const handleLogout = () => {
+    localStorage.clear(); // Clear local storage
+    navigate("/signin", { replace: true }); // Redirect to signin page
+  };
+
   return (
     <nav className="navbar">
       <h2>AgriMonie</h2>
@@ -14,11 +19,13 @@ const Navbar: React.FC = () => {
         {user?.online && <Link to="/home">Home</Link>}
         {user?.online && <Link to="/score">Credit Score</Link>}
         {user?.online && <Link to="/profile">Profile</Link>}
-        {user?.online && <Link to="/dashboard">Dashboard</Link>}
+        <Link to="/dashboard">Dashboard</Link>
         {!user?.online ? (
           <Link to="/signin">Sign In</Link>
         ) : (
-          <Link to="/signin">Logout</Link>
+          <span onClick={handleLogout} style={{ cursor: "pointer" }}>
+            Logout
+          </span>
         )}
       </div>
     </nav>

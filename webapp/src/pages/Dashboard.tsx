@@ -11,6 +11,9 @@ const DashboardPage: React.FC = () => {
   return (
     <div className="dashboard-container">
       <h1>App Dashboard</h1>
+      <center style={{color:"#fff"}}>
+        <p>Cultivating Insights, Growing Success</p>
+      </center>
       <div className="dashboard-content">
         <PowerBIEmbed title="App Dashboard" src={powerBiUrl} />
       </div>

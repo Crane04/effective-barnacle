@@ -1,32 +1,34 @@
 .input-group {
-    margin-bottom: 1rem;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #fff;
-  }
-  
-  .input-group input,
-  .input-group select {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    appearance: none; /* remove default arrow (optional) */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-  
-  .input-group input::placeholder {
-    color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .input-group select:invalid {
-    color: rgba(255, 255, 255, 0.2); /* match placeholder styling for select default */
-  }
-  
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 15px;
+  /* background-color: rgba(255, 255, 255, 0.1);*/
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  /* color: black; */
+  font-size: 16px;
+  color: white;
+}
+.input-group select {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.input-group input {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input-group select:invalid {
+  /* color: rgba(255, 255, 255, 0.2); match placeholder styling for select default */
+}

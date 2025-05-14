@@ -11,9 +11,12 @@ interface InputProps {
   type: string;
   name: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   placeholder?: string;
   options?: Option[]; // used only for select
+  required?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -24,12 +27,19 @@ const Input: React.FC<InputProps> = ({
   onChange,
   placeholder,
   options = [],
+  required = true,
 }) => {
   return (
     <div className="input-group">
       <label htmlFor={name}>{label}</label>
       {type === "select" ? (
-        <select name={name} id={name} value={value} onChange={onChange} required>
+        <select
+          name={name}
+          id={name}
+          value={value}
+          onChange={onChange}
+          required
+        >
           <option value="" disabled>
             {placeholder || "Select an option"}
           </option>
@@ -46,7 +56,7 @@ const Input: React.FC<InputProps> = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          required
+          required={required}
         />
       )}
     </div>

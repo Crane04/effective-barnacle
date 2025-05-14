@@ -4,6 +4,7 @@ import "../css/AuthPage.css";
 import AuthImagePanel from "../components/AuthImagePanel";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signin: React.FC = () => {
   const { signIn } = useAuth();
@@ -58,6 +59,12 @@ const Signin: React.FC = () => {
               onChange={handleChange}
               placeholder="*******"
             />
+            <p style={{ color: "#fff" }}>
+              Don't have an account? {" "}
+              <Link to={"/signup"} style={{ color: "#f39c12" }}>
+                Sign Up
+              </Link>
+            </p>
             <button type="submit">Sign In</button>
           </form>
         </div>

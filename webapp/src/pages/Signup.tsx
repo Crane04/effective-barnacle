@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import ErrorDisplay from "../components/ErrorDisplay";
+import { Link } from "react-router-dom";
 
 const Signup: React.FC = () => {
   const { signUp } = useAuth();
@@ -116,6 +117,7 @@ const Signup: React.FC = () => {
               value={formData.organization_name}
               onChange={handleChange}
               placeholder="doe inc."
+              required={false}
             />
             <Input
               label="Phone Number"
@@ -154,6 +156,9 @@ const Signup: React.FC = () => {
               onChange={handleChange}
               placeholder="*******"
             />
+            <p style={{color: "#fff"}}>
+              Have an account? <Link to={"/signin"} style={{color:"#f39c12"}}>Sign In</Link>
+            </p>
             <ErrorDisplay errors={error} />
             <Button variant="secondary" type="submit">
               Join Now
