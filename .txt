@@ -1,0 +1,168 @@
+1. Demographics
+gender: Gender
+  Unique values: ['Female' 'Male']
+  
+marital_status: Marital Status
+  Unique values: ['Married (Monogamy)' 'Never married' 'Widowed' 'Married (Polygamy)'
+					'Separated' 'Divorced' 'Refused to answer' 'Co-Habiting/living together']  
+					
+has_disability: Do You have a Disability?
+  Unique values: ['No' 'Yes']
+
+2. Employment and Income
+has_unemployed: Any household member aged 15+ unemployed but looking for work?
+  Unique values: ['Yes' 'No']
+
+main_income_source: Main source of household income
+  Unique values: ['Family Support (Non-student)' 'Family Support (Student)'
+ 'Subsistence Farming' 'Non-farming Business' 'Service Business'
+ 'Informal Employment' 'Formal Employment (Business)'
+ 'Family Support (Retired)' 'Others' 'Government Salary' 'Manual Labour'
+ 'Large Scale Farming' 'Farming Business' 'Agricultural Inputs Business'
+ 'Investment Income' 'Government Grant' 'Rental Income' 'Pension'
+ 'Interest Income' 'Relief Aid']
+
+income_sector: Which sector does your income come from?
+  Unique values: ['Not Applicable' 'Agriculture' 'Trade' 'Artisan' 'Education'
+ 'Manufacturing' 'Others' 'Mining' 'Repair Services' 'Transport'
+ 'Arts & Entertainment' 'Professional Services' 'Health & Social Work'
+ 'Admin Services' 'Construction' 'Hospitality' 'Waste & Water Services'
+ 'ICT' 'Utilities' 'Finance' 'Real Estate']
+
+preferred_investments: Which investment choice appeals to you?
+  Unique values: [' '' '']
+
+investment_frequency: How often do you invest money?
+  Unique values: ['Never' 'Sometimes' 'Always']
+
+risk_preference_gain: Risk preference when expecting gains
+  Unique values: ['Sure Gain' 'Risky Gain' 'No Response']
+
+risk_preference_loss: Risk preference when facing losses
+  Unique values: ['Sure Loss' 'Risky Loss' 'No Response']
+  
+3. Household and Living Conditions
+ownership_status: Do you or your family own or rent your home?
+  Unique values: ['Own A house' 'Live Free' 'Rent A House' 'Dont Know']
+  
+house_acquisition: How was this house acquired?
+  Unique values: ['' '' '' '' ''
+				'' '' ''
+				'']
+  
+household_assets: Which is these do your household have? (Pick most important)
+  Unique values: ['One mattress' 'Three or more mattresses' 'Two mattresses'
+				 'Telephone (mobile)' 'Colour TV' 'Music system'
+				 'Air Conditioning (single unit)' 'Black & white TV' 'Washing machine'
+				 'Fridge/deep freezer' 'Microwave' 'Motorbike' 'Computer (laptop)'
+				 'Keke Napep' 'Telephone (land)' 'Household help']
+
+financial_decision_maker: Who makes most financial decisions in your household?
+  Unique values: ['Spouse' 'Parents' 'Myself' 'Siblings' 'Myself with someone else'
+ 'Children' 'Other relatives' 'All adults' 'Non-relatives']
+
+4. Financial Services and Habits
+uses_budget: Do you use a household or personal budget?
+  Unique values: ['No' "Don't know" 'Yes']
+
+financial_tracking: Do you track your spending or income?
+  Unique values: ['No' "Don't know" 'Yes']
+  
+financial_planning: To what extent do you agree: You plan ahead financially?
+  Unique values: ['' '' '' '' '']
+  
+cash_shortage_frequency: How often have you run out of money and couldn't cover expenses?
+  Unique values: ['' '' '' '']
+  
+emergency_fund_access: 
+  Unique values: ['' '' '' ''
+ '']
+ 
+finhealth: What is  your Primary Financial Behavior Describing Interaction with Money.
+  Unique values: ['' '' '' '' '' ''
+ '']
+
+finneeds: What is your Primary financial need or priority category
+  Unique values: ['Financial Goals' 'Liquidity Distress' 'Liquidity' 'Resilience'
+				 'Transfer of Value - Income' 'Transfer of Value - Cash Income'
+				 'Transfer of Value - Digital Income']
+
+borrowed_airtime: Have you borrowed airtime before?
+  Unique values: ['No' 'Yes']
+  
+utility_bill_payments: Do you regularly pay utility bills?
+  Unique values: ['No' 'Yes']
+
+5. Mobile Money & Digital Finance
+mobile_money_awareness: 
+  Unique values: ['' '']
+
+mobile_money_experience: Which best describes your mobile money usage?
+  Unique values: ['Not Applicable' 'Never Used' "Uses Others' Account"
+					'Registered, Never Used' 'Registered User']
+
+mobile_money_frequency: 
+  Unique values: ['' '' '' '' '' ''
+ '' '']
+
+mobile_money_issues: 
+  Unique values: ['' '' '' ''
+ '' ''
+ '' '']
+
+
+6. Remittance & Transfers
+money_transfer_activities: 
+  Unique values: ['' '' ''
+				 '' '']
+
+money_send_reason: What influences your choice of money transfer method?
+  Unique values: ['Not Applicable' 'Trust & Familiarity' 'Easy to Use' 'Reliable'
+ 'Based on Request' 'Quick Service' 'No Transaction Cost' 'Others'
+ 'Only Availabile Option']
+ 
+system_downtime: Have you experienced system downtime when accessing services?
+  Unique values: ["Don't know" 'No' 'Yes']
+  
+
+7. Financial Challenges and Behaviors
+digital_banking: 
+  Unique values: ["" 'No' 'Yes']
+  
+goal_actions: What actions have you taken toward financial goals?
+  Unique values: ['' '' '' ''
+				 '' '' '' ''
+				 '' '' '' ''
+				 '' '']
+
+credit_activities: Which credit activities have you engaged in?
+  Unique values: ['' '' '']
+
+debt_manageability: How manageable is your current debt?
+  Unique values: ['' '' '' '']
+
+  
+Remaining Features: [Min, Max]  
+1. Demographics:
+household_size: How many people live in this household?
+  Unique values: [1.0, 25.0]
+ 
+adults_count: How many people in the household are aged 18 years and above?
+  Unique values: [0.0, 17.0]
+
+age: How old are you?
+  Unique values: [15.0, 30.0]
+
+2. Employment and Income 
+
+  Unique values: [0.0, 40.0]
+
+monthly_income: What is your total personal monthly income?
+  Unique values: [100.0, 6000000.0]
+ 
+4. Financial Services and Habits
+avg_amount_received: On Average, how much money do you receive monthly?
+  Unique values: [0.0, 6000000.0]
+ 
+avg_amount_sent: On Average, how much money do you send out monthly?
+  Unique values: [0.0, 950000.0]

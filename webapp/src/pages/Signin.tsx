@@ -2,17 +2,37 @@ import React, { useState } from "react";
 import Input from "../components/Input";
 import "../css/AuthPage.css";
 import AuthImagePanel from "../components/AuthImagePanel";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Signin: React.FC = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Signin data:", formData);
+    try {
+      const response = await signIn(formData);
+      if (response?.access) {
+        localStorage.setItem("access", response?.access);
+        alert("Login Successful");
+        navigate("/home");
+      }
+    } catch (error: any) {
+      if (error?.response?.data.detail) {
+        alert(error?.response?.data.detail);
+      }
+    }
   };
 
   return (

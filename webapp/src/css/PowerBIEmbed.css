@@ -1,0 +1,14 @@
+/* components/PowerBIEmbed.css */
+.powerbi-container {
+    width: 100%;
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .powerbi-iframe {
+    border: none;
+    min-height: 500px; /* Minimum height */
+    display: block;
+  }

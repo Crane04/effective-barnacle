@@ -3,30 +3,78 @@ import Input from "../components/Input";
 import "../css/AuthPage.css";
 import AuthImagePanel from "../components/AuthImagePanel";
 import Button from "../components/Button";
-
-console.log(import.meta.env.VITE_API_URL);
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import ErrorDisplay from "../components/ErrorDisplay";
 
 const Signup: React.FC = () => {
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<object>({});
+
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
-    organizationName: "",
-    userType: "",
-    phone: "",
+    confirmPassword: "",
+    organization_name: "",
+    user_type: "",
+    phone_number: "",
+    fullname: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    return;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Signup data:", formData);
+    setError({}); // Clear previous errors
+
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setError({ password: "Passwords don't match!" });
+      return;
+    }
+
+    // Basic validation
+    if (!formData.email || !formData.password || !formData.username) {
+      setError({ general: "Please fill in all required fields" });
+      return;
+    }
+
+    try {
+      const response = await signUp(formData);
+
+      console.log(response);
+      if (response?.id) {
+        alert("Account created successfully!");
+        navigate("/signin");
+      } else if (response?.errors) {
+        // Handle API validation errors
+        setError(response.errors);
+      } else {
+        setError({ general: "Signup failed. Please try again." });
+      }
+    } catch (err: any) {
+      console.error("Signup error:", err);
+
+      if (err.response?.data?.errors) {
+        // Handle structured error response from API
+        setError(err.response.data.errors);
+      } else if (err.message) {
+        // Handle general error message
+        setError({ general: err.message });
+      } else {
+        setError({
+          general: "An unexpected error occurred. Please try again.",
+        });
+      }
+    }
   };
-//  
+  //
   return (
     <div className="auth-container">
       <AuthImagePanel />
@@ -37,6 +85,14 @@ const Signup: React.FC = () => {
           </center>
 
           <form onSubmit={handleSubmit}>
+            {/* <Input
+              label="Fullname"
+              type="text"
+              name="fullname"
+              value={formData.fullname}
+              onChange={handleChange}
+              placeholder="John Doe"
+            /> */}
             <Input
               label="Email"
               type="email"
@@ -56,29 +112,29 @@ const Signup: React.FC = () => {
             <Input
               label="Organization Name (Optional)"
               type="text"
-              name="username"
-              value={formData.username}
+              name="organization_name"
+              value={formData.organization_name}
               onChange={handleChange}
               placeholder="doe inc."
             />
             <Input
               label="Phone Number"
               type="text"
-              name="phone"
-              value={formData.phone}
+              name="phone_number"
+              value={formData.phone_number}
               onChange={handleChange}
               placeholder="+234 123 4567 910"
             />
             <Input
               label="User Type"
               type="select"
-              name="userType"
-              value={formData.userType}
+              name="user_type"
+              value={formData.user_type}
               onChange={handleChange}
               placeholder="Choose user type"
               options={[
-                { key: "organization", value: "Organization" },
-                { key: "user", value: "Farmer" },
+                { key: "lender", value: "Organization" },
+                { key: "user", value: "User" },
               ]}
             />
 
@@ -93,12 +149,12 @@ const Signup: React.FC = () => {
             <Input
               label="Confirm Password"
               type="password"
-              name="password"
-              value={formData.password}
+              name="confirmPassword"
+              value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="*******"
             />
-
+            {/* <ErrorDisplay errors={error} /> */}
             <Button variant="secondary" type="submit">
               Join Now
             </Button>

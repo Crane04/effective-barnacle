@@ -1,0 +1,26 @@
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.step {
+  padding: 10px 20px;
+  border-bottom: 3px solid #ccc;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+}
+
+.step.active {
+  border-color: #f39c12;
+  color: #f39c12;
+}
+
+.profile-wizard {
+  padding: 1rem 20rem;
+}
+
+.profile-wizard h1{
+  color: #fff;
+}
